@@ -1,0 +1,9 @@
+django>=5.0.0<5.0.3
+djangorestframework
+pyyaml
+requests
+django-cors-headers
+mysqlclient
+djangorestframework-simplejwt
+django-filter
+pillow
