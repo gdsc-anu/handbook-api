@@ -1,5 +1,6 @@
-from django.core.exceptions import ValidationError
 from django.db import models
+from django.utils.text import slugify
+
 
 class HandbookCategory(models.Model):
     name = models.CharField(max_length=255)
@@ -8,13 +9,15 @@ class HandbookCategory(models.Model):
     def __str__(self):
         return self.name
 
-    def clean(self):
-        if not self.slug.isalpha():
-            raise ValidationError("Please use only alphabetic characters for the slug.")
+    def save(self, *args, **kwargs):
+        # Generate slug based on name
+        self.slug = slugify(self.name)
+        super().save(*args, **kwargs)
 
 class HandbookEntry(models.Model):
     category = models.ForeignKey(HandbookCategory, on_delete=models.CASCADE)
     title = models.CharField(max_length=255)
+    slug = models.SlugField(unique=True)
     content = models.TextField()
     image = models.ImageField(upload_to='content_images', blank=True, null=True)
     video = models.URLField(blank=True, null=True)
@@ -23,7 +26,14 @@ class HandbookEntry(models.Model):
     def __str__(self):
         return self.title
 
+    
+    def save(self, *args, **kwargs):
+        # Generate slug based on title
+        self.slug = slugify(self.title)
+        super().save(*args, **kwargs)
+        
+        
     class Meta:
-        unique_together = ['category', 'title']
+        unique_together = ['category', 'slug']
         ordering = ['category', 'title']
         

@@ -4,9 +4,12 @@ from . import views
 
 urlpatterns = [
     path('handbook/categories/', views.handbook, name='categories_list'),
-    path('handbook/categories/<int:pk>/', views.category_detail, name='categories_detail'),
-    path('handbook/categories/<int:category_pk>/entries/', views.category_entries, name='category_entries_list'),
-    path('handbook/categories/<int:category_pk>/entries/<int:entry_pk>/', views.category_entry_detail, name='category_entries_detail'),
+    
+    path('handbook/<slug:slug>/', views.category_detail, name='categories_detail'),
+    
+    path('handbook/<slug:category_slug>/entries/', views.category_entries, name='category_entries_list'),
+    
+    path('handbook/<slug:category_slug>/<slug:entry_slug>/', views.category_entry_detail, name='category_entries_detail'),
 ]
 
 

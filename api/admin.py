@@ -18,6 +18,7 @@ class HandbookEntryAdmin(admin.ModelAdmin):
     list_display = ('category', 'title')
     list_filter = ('category',)
     search_fields = ('title', 'content')
+    prepopulated_fields = {'slug': ('title',)}  # Prepopulate slug field based on title
 
     actions = ['archive_entries']
 
