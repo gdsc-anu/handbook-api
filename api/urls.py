@@ -1,6 +1,16 @@
 from django.urls import path
 from . import views
 
+
+urlpatterns = [
+    path('handbook/categories/', views.handbook, name='categories_list'),
+    path('handbook/categories/<int:pk>/', views.category_detail, name='categories_detail'),
+    path('handbook/categories/<int:category_pk>/entries/', views.category_entries, name='category_entries_list'),
+    path('handbook/categories/<int:category_pk>/entries/<int:entry_pk>/', views.category_entry_detail, name='category_entries_detail'),
+]
+
+
+"""
 urlpatterns = [
     path('handbook/categories/', views.handbook, name='categories_list'),
     path('handbook/categories/create/', views.handbook, name='categories_create'),
@@ -13,3 +23,4 @@ urlpatterns = [
     path('handbook/entries/update/<int:pk>/', views.entry_detail, name='entries_update'),
     path('handbook/entries/delete/<int:pk>/', views.entry_detail, name='entries_delete'),
 ]
+"""
