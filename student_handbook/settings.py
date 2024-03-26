@@ -80,15 +80,12 @@ WSGI_APPLICATION = 'student_handbook.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'student_handbook',
-        'USER': 'root',
-        'PASSWORD': '',
-        'HOST': 'localhost',
-        'PORT': '3306',
-        'OPTIONS': {
-            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
-        }
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'dqmd7argqr6p',
+        'USER': 'ygqneuodcmojbr',
+        'PASSWORD': '42312af93378287eee517d737dc5198080a07519b07b6eb81bc1ecf54eac3d05',
+        'HOST': 'ec2-107-21-67-46.compute-1.amazonaws.com',
+        'PORT': '5432',
     }
 }
 
