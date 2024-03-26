@@ -7,3 +7,4 @@ mysqlclient
 djangorestframework-simplejwt
 django-filter
 pillow
+whitenoise
