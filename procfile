@@ -1,1 +1,1 @@
-web: gunicorn student_handbook.wsgi
+web: gunicorn student_handbook.wsgi:application --log-file -
