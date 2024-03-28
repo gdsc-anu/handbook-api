@@ -4,7 +4,7 @@ from django.utils.text import slugify
 
 class HandbookCategory(models.Model):
     name = models.CharField(max_length=255)
-    slug = models.SlugField(unique=True)
+    slug = models.SlugField(unique=True, max_length=255)
 
     def __str__(self):
         return self.name
